@@ -7,7 +7,7 @@ if "task_list" not in st.session_state:
 task_list = st.session_state.task_list
 
 if "joke" not in st.session_state:
-    api_key = st.secrets["jokes_api"]["api_key"]
+    api_key = st.secrets.get("jokes_api", {}).get("api_key")
     st.session_state.joke = generate_joke(api_key)
 
 def add_task(task_name: str):
